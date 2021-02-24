@@ -3,7 +3,7 @@
 
   
 
-All notable changes to this project will be documented in this file. See [CHANGELOG.md](https://github.com/pietrobs/pietro-boilerplate/blob/main/CHANGELOG.md) for commit guidelines.
+All notable changes to this project will be documented in [CHANGELOG.md](https://github.com/pietrobs/pietro-boilerplate/blob/main/CHANGELOG.md).
 
   
 

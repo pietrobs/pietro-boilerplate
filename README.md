@@ -1,46 +1,84 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# pietro-boilerplate
 
-## Available Scripts
+  
 
-In the project directory, you can run:
+All notable changes to this project will be documented in this file. See [CHANGELOG.md](https://github.com/pietrobs/pietro-boilerplate/blob/main/CHANGELOG.md) for commit guidelines.
 
-### `yarn start`
+  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## DevDependencies
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- commitlint
+- craco
+- eslint
+- husky
+- lint-staged
+- prettier
+- standard-version
+- craco-alias
+- cz-conventional-changelog
+- commitzen
 
-### `yarn test`
+## How to make a commit?
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> $ git add [FILES]
+> $ yarn commit
 
-### `yarn build`
+1.  ? Select the type of change that you're committing: (Use arrow keys)
+❯ feat:     A new feature 
+  fix:      A bug fix 
+  docs:     Documentation only changes 
+  style:    Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc) 
+  refactor: A code change that neither fixes a bug nor adds a feature 
+  perf:     A code change that improves performance 
+  test:     Adding missing tests or correcting existing tests 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. ? What is the scope of this change (e.g. component or file name): (press enter to skip) 
+3. ? Write a short, imperative tense description of the change (max 94 chars):
+4. ? Provide a longer description of the change: (press enter to skip)
+5. ? Are there any breaking changes? (y/N) 
+6. ? Does this change affect any open issues? (y/N) 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## How to generate a release
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> $ yarn release
 
-### `yarn eject`
+## Folders
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+   - 📄 [CHANGELOG.md](CHANGELOG.md)
+   - 📄 [README.md](README.md)
+   - 📄 [commitlint.config.js](commitlint.config.js)
+   - 📄 [craco.config.js](craco.config.js)
+   - 📂 __env__
+   - 📄 [node\_modules](node_modules)
+   - 📄 [package.json](package.json)
+   - 📂 __public__
+     - 📄 [favicon.ico](public/favicon.ico)
+     - 📄 [index.html](public/index.html)
+     - 📄 [manifest.json](public/manifest.json)
+     - 📄 [robots.txt](public/robots.txt)
+   - 📂 __src__
+     - 📄 [App.tsx](src/App.tsx)
+     - 📄 [GlobalStyle.ts](src/GlobalStyle.ts)
+     - 📄 [Routes.tsx](src/Routes.tsx)
+     - 📂 __components__
+       - 📄 [InitialLoading.tsx](src/components/InitialLoading.tsx)
+       - 📄 [index.ts](src/components/index.ts)
+     - 📂 __configs__
+       - 📄 [index.ts](src/configs/index.ts)
+     - 📄 [index.tsx](src/index.tsx)
+     - 📂 __pages__
+       - 📄 [index.ts](src/pages/index.ts)
+     - 📄 [react\-app\-env.d.ts](src/react-app-env.d.ts)
+     - 📂 __services__
+       - 📄 [index.ts](src/services/index.ts)
+     - 📂 __templates__
+       - 📄 [Layout.tsx](src/templates/Layout.tsx)
+     - 📂 __theme__
+       - 📄 [index.ts](src/theme/index.ts)
+     - 📂 __utils__
+       - 📄 [index.ts](src/utils/index.ts)
+   - 📄 [tsconfig.json](tsconfig.json)
+   - 📄 [tsconfig.paths.json](tsconfig.paths.json)
+   - 📄 [yarn.lock](yarn.lock)

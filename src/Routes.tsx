@@ -2,7 +2,14 @@ import React from "react";
 import { Route, Switch, Redirect, BrowserRouter } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-const pages = [
+interface Page {
+  path: string;
+  exact: boolean;
+  component: any;
+  isPrivate?: boolean;
+}
+
+const pages: Page[] = [
   { path: "/", exact: true, component: () => <p>Hello Home!</p> },
   { path: "/404", exact: true, component: () => <p>Page Not Found</p> },
 ];

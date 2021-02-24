@@ -1,8 +1,13 @@
 import React from "react";
-import "./App.css";
+import Layout from "templates/Layout";
+import Routes from "./Routes";
 
 function App() {
-  return <h1>pietro-boilerplate</h1>;
+  return (
+    <Layout>
+      <Routes />
+    </Layout>
+  );
 }
 
 export default App;

@@ -82,3 +82,54 @@ All notable changes to this project will be documented in this file. See [CHANGE
    - 📄 [tsconfig.json](tsconfig.json)
    - 📄 [tsconfig.paths.json](tsconfig.paths.json)
    - 📄 [yarn.lock](yarn.lock)
+
+# Imports 
+
+> [tsconfig.paths.json](tsconfig.paths.json)
+
+```json
+	{
+
+	"compilerOptions": {
+
+		"baseUrl": "./src",
+
+		"paths": {
+
+			"components/*": ["./components/*"]
+
+		}
+
+	}
+
+}
+```
+
+
+```javascript
+❌ import COMPONENT from '../../components/path/to/component';
+
+✅ import COMPONENT from 'components/path/to/component';
+```
+
+## Routes
+> [Routes.tsx](src/Routes.tsx)
+
+```typescript
+interface Page{
+	path: string;
+	exact: boolean;
+	component: any;
+	isPrivate: boolean;
+}
+
+const  pages: Page[] = [
+	{ path:  "/", exact:  true, component: () =>  <p>Hello Home!</p> },
+	{ path:  "/404", exact:  true, component: () =>  <p>Page Not Found</p> },
+	[ADD A NEW PAGE HERE]
+];
+
+```
+
+
+

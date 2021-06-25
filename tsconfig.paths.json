@@ -3,7 +3,14 @@
     "baseUrl": "./src",
     "paths": {
       "components/*": ["./components/*"],
-      "templates/*": ["./templates/*"]
+      "templates/*": ["./templates/*"],
+      "contexts/*": ["./contexts/*"],
+      "configs/*": ["./configs/*"],
+      "utils/*": ["./utils/*"],
+      "pages/*": ["./pages/*"],
+      "hooks/*": ["./hooks/*"],
+      "theme/*": ["./theme/*"],
+      "api/*": ["./api/*"]
     }
   }
 }

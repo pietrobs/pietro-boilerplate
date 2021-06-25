@@ -1,0 +1,23 @@
+export const ALREADY_DISABLED = 'ALREADY_DISABLED'
+export const ALREADY_STARTED = 'ALREADY_STARTED'
+export const ALREADY_STOPPED = 'ALREADY_STOPPED'
+export const CONTACT_REQUIRED = 'CONTACT_REQUIRED'
+export const INVALID_FORMAT = 'INVALID_FORMAT'
+export const INVALID_PAYLOAD = 'INVALID_PAYLOAD'
+export const METHOD_NOT_ALLOWED = 'METHOD_NOT_ALLOWED'
+export const NEED_BE_IN_FUTURE = 'NEED_BE_IN_FUTURE'
+export const NOT_FOUND = 'NOT_FOUND'
+export const NOT_NULL = 'NOT_NULL'
+export const NOT_STARTED = 'NOT_STARTED'
+
+export const FlowType = {
+  NORMAL: 0,
+  FLEURY: 1
+}
+
+export const BillingType = {
+  UNKNOWN: 0,
+  CLINIC: 1,
+  PATIENT: 2,
+  DEFINED_BY_OPERATOR: 3
+}

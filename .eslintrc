@@ -6,23 +6,38 @@
     "node": true
   },
   "extends": ["plugin:react/recommended", "airbnb", "prettier"],
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 2018,
+    "ecmaVersion": 2021,
     "sourceType": "module",
     "allowImportExportEverywhere": true
   },
   "plugins": ["react", "prettier"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
-    "prettier/prettier": ["error"],
+    "prettier/prettier": [
+      "warn"
+    ],
+    "react/require-default-props": "off",
+    "no-shadow": "off",
+    "no-use-before-define": "off",
     "no-unused-vars": ["warn"],
     "no-console": ["warn"],
     "react/jsx-props-no-spreading": "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "react/no-array-index-key": "off",
+    "import/no-extraneous-dependencies": "off",
+    "react/forbid-prop-types": "off",
+    "react/destructuring-assignment": "off",
+    "import/prefer-default-export": "off",
+    "import/order": "off",
+    "import/export": "off",
+    "lines-between-class-members": "off",
+    "jsx-a11y/media-has-caption": "off",
+    "no-param-reassign": "off",
   },
   "settings": {
     "import/resolver": {

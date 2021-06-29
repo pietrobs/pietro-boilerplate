@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Dialog from "@material-ui/core/Dialog";
@@ -29,6 +29,16 @@ interface IConfigureModalProps {
 const ConfigureModal = ({ visible, handleClose }: IConfigureModalProps) => {
     const { state, update } = useContext(AppContext);
     const [m3u8, setM3u8] = useState(state.m3u8);
+    const fileRef = useRef<HTMLInputElement>();
+
+    useEffect(() => {
+        console.log("Tentando iniciar fileRef");
+        if(fileRef.current){
+            console.log("Iniciou");
+            (fileRef.current as any).directory = true;
+            (fileRef.current as any).webkitdirectory = true;
+        }
+    }, [fileRef.current])
 
     const handleDeviceChange = (mode: ModeType) => {
         update("mode", mode);
@@ -70,7 +80,7 @@ const ConfigureModal = ({ visible, handleClose }: IConfigureModalProps) => {
                 {/* <div className="spacing-x2">
                 <SelectDevice handleDeviceChange={handleDeviceChange} device={state.mode} />
                 </div> */}
-                <input type="file" onChange={e => console.log(e)} directory multiple={false} />
+                <input ref={fileRef} type="file" onChange={e => {console.log(e); console.log(e.target.value)}} multiple={false} />
                 <div className="spacing-x2">
                 <SelectOutput handleOutputChange={handleOutputChange} m3u8={m3u8} setM3u8={(m3u8) => setM3u8(m3u8)} />
                 </div>

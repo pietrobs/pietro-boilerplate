@@ -9,6 +9,7 @@ import {
   CardHeader,
   Grid,
   LinearProgress,
+  TextField,
 } from "@material-ui/core";
 import isTouchSupported from "utils/touch";
 import SelectDevice from "components/SelectDevice";
@@ -118,7 +119,72 @@ interface IThirdStepProps extends IStepProps {
   activationCode: string;
 }
 
-export const ThirdStep = ({ onNext, handleChange, activationCode }: IThirdStepProps) => {
+export const ThirdStepAuth = ({ onNext, handleChange, activationCode }: IThirdStepProps) => {
+  const { state, update } = useContext(AppContext);
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const handleActivate = async () => {
+    setLoading(true);
+
+    try {
+      await setToken(activationCode);
+      update("activationCode", activationCode);
+    } catch (err) {
+      console.log("Erro");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <Card elevation={2}>
+      <CardMedia
+        component="img"
+        alt="welcome"
+        height="250"
+        width="100%"
+        image="https://iam.vlab.live/static/media/login-bg.9c595754.jpg"
+      />
+      <CardHeader title="Ativação" />
+      <CardContent>
+        <p className="spacing-x2">Faça login para continuar.</p>
+        <Grid container justify="center">
+          <TextField
+            fullWidth
+            label="E-mail"
+            variant="outlined"
+            className="spacing-x2"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+
+          <TextField
+            fullWidth
+            type="password"
+            label="Senha"
+            variant="outlined"
+            className="spacing-x2"
+            helperText={passwordError}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </Grid>
+      </CardContent>
+      <CardActions>
+        <Grid container justify="flex-end">
+          <Button color="primary" onClick={handleActivate} disabled={loading}>
+            Próximo
+          </Button>
+        </Grid>
+      </CardActions>
+      {loading && <LinearProgress />}
+    </Card>
+  );
+};
+
+export const ThirdStepCode = ({ onNext, handleChange, activationCode }: IThirdStepProps) => {
   const { state, update } = useContext(AppContext);
   const [showCodeInput, setShowCodeInput] = useState(true);
   const [loading, setLoading] = useState(false);

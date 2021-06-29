@@ -5,7 +5,7 @@ import useStepper from "hooks/useStepper";
 import React, { useContext, useState, useEffect } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Keyboard from "react-simple-keyboard";
-import { FirstStep, SecondStep, ThirdStep } from "./components/Steps";
+import { FirstStep, SecondStep, ThirdStepCode } from "./components/Steps";
 import ActivationCodePageContainer from "./styles";
 
 // import { Container } from './styles';
@@ -53,7 +53,7 @@ const ActivationCodePageDesktop = () => {
               {currentStep === 0 && <FirstStep onNext={nextStep} />}
               {currentStep === 1 && <SecondStep onNext={nextStep} />}
               {currentStep === 2 && (
-                <ThirdStep
+                <ThirdStepCode
                   onNext={nextStep}
                   activationCode={activationCode}
                   handleChange={setActivationCode}

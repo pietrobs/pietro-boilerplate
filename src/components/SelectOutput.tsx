@@ -1,56 +1,65 @@
-import { Button, FormControl, FormLabel, TextField } from "@material-ui/core";
+import {
+  Button,
+  FormControl,
+  FormLabel,
+  IconButton,
+  InputLabel,
+  InputAdornment,
+  Input,
+  Paper,
+  FormHelperText,
+} from "@material-ui/core";
 import useModal from "hooks/useModal";
-import React from "react";
+import React, { useState } from "react";
 import { getDisplayMedia } from "utils/screen";
 import Snackbar from "./Snackbar";
+import CheckIcon from "@material-ui/icons/Check";
 
 // import { Container } from './styles';
 
 interface ISelectOutputProps {
-  handleOutputChange: (screen?: MediaStream) => void;
-  onStop?: () => void;
+  handleOutputChange: () => void;
   m3u8: string;
   setM3u8: Function;
 }
 
-const SelectOutput = ({ handleOutputChange, onStop, m3u8, setM3u8 }: ISelectOutputProps) => {
+const SelectOutput = ({ handleOutputChange, m3u8, setM3u8 }: ISelectOutputProps) => {
   const { visibility, openModal, closeModal } = useModal();
+  const [edited, setEdited] = useState(false);
 
-  // const handleChange = async () => {
-  //   let screen;
+  const handleChange = (e) => {
+    setM3u8(e.target.value);
+    setEdited(true);
+  };
 
-  //   try {
-  //     screen = await getDisplayMedia(onStop);
-  //   } catch (err) {
-  //     openModal();
-  //     console.log(err);
-  //   }
-  //   handleOutputChange(screen);
-  // };
+  const handleSave = () => {
+    handleOutputChange();
+    setEdited(false);
+  };
 
   return (
     <>
-      <FormControl component="fieldset">
-        <FormLabel component="legend">Configurações de captura: </FormLabel>
+      <FormControl component="fieldset" fullWidth>
+        <FormLabel component="legend">URL do encoder:</FormLabel>
 
-        <TextField
-          fullWidth
-          label="Url encoder"
-          variant="outlined"
-          className="spacing-x2"
+        <Input
+          id="standard-adornment-password"
+          type="text"
           value={m3u8}
-          onChange={(e) => setM3u8(e.target.value)}
+          onChange={handleChange}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton type="submit" aria-label="search" onClick={handleSave}>
+                <CheckIcon />
+              </IconButton>
+            </InputAdornment>
+          }
         />
-        <Button
-          onClick={() => {
-            handleOutputChange();
-          }}
-          variant="outlined"
-          color="primary"
-          className="spacing-x2"
-        >
-          Alterar
-        </Button>
+        {edited && (
+          <FormHelperText style={{ display: "flex", alignItems: "center" }}>
+            Clique em <CheckIcon style={{ margin: "0px 4px" }} /> para confirmar
+          </FormHelperText>
+        )}
       </FormControl>
       <Snackbar
         visible={visibility}

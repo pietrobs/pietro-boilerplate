@@ -62,11 +62,13 @@ const GlobalStyle = createGlobalStyle`
 
     .fade-enter.fade-enter-active {
         opacity: 1;
-        transition: opacity var(--timeout) ease-in;
+        transform: translateY(5000);
+        transition: all var(--timeout) ease-in;
     }
 
     .fade-exit {
         opacity: 1;
+        transform: translateY(0);
     }
 
     .fade-exit.fade-exit-active {
@@ -140,7 +142,15 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .spacing-x3{
-        margin: 24px;
+        margin: 24px 0px;
+    }
+
+    .spacing-x4{
+        margin: 32px 0px;
+    }
+
+    .no-spacing-bottom{
+        margin-bottom: 0px;
     }
 
     .pd{

@@ -31,7 +31,7 @@ export const DEFAULT_CONFIGS: IConfigs = getConfigs() || {
   mode: getModeFromDeviceCapabilities(),
   activationCode: "",
   stream: null,
-  m3u8: "",
+  m3u8: "http://172.20.200.31:8100/main.m3u8",
 };
 
 interface IAppContext {

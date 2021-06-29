@@ -24,16 +24,16 @@ function App() {
 
   return (
     <ThemeProvider theme={muiTheme}>
-      <VideoProvider>
-        <NetworkProvider>
-          <NetworkListener />
-          <AppContext.Provider value={{ state: globalState, update: handleSetGlobalState }}>
+      <AppContext.Provider value={{ state: globalState, update: handleSetGlobalState }}>
+        <VideoProvider>
+          <NetworkProvider>
+            <NetworkListener />
             <Layout>
               <Routes />
             </Layout>
-          </AppContext.Provider>
-        </NetworkProvider>
-      </VideoProvider>
+          </NetworkProvider>
+        </VideoProvider>
+      </AppContext.Provider>
     </ThemeProvider>
   );
 }

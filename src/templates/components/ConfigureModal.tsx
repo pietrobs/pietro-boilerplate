@@ -67,9 +67,10 @@ const ConfigureModal = ({ visible, handleClose }: IConfigureModalProps) => {
             <Divider />          
 
             <DialogContent style={{marginTop: isFullScreen ? 84 : 0, width: 600}} >
-                <div className="spacing-x2">
+                {/* <div className="spacing-x2">
                 <SelectDevice handleDeviceChange={handleDeviceChange} device={state.mode} />
-                </div>
+                </div> */}
+                <input type="file" onChange={e => console.log(e)} directory multiple={false} />
                 <div className="spacing-x2">
                 <SelectOutput handleOutputChange={handleOutputChange} m3u8={m3u8} setM3u8={(m3u8) => setM3u8(m3u8)} />
                 </div>

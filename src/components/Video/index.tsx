@@ -59,10 +59,13 @@ const HlsPlayer = (props: IHlsPlayerProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
+    console.log("m3u8 changed", props.m3u8)
     initHls(props.m3u8);
-  }, []);
+  }, [props.m3u8]);
 
   const initHls = (m3u8: string) => {
+    console.log("initHls", m3u8);
+
     if (hls.current) hls.current.destroy();
 
     hls.current = new Hls({

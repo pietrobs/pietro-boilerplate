@@ -1,24 +1,38 @@
-import { Button, Grid, TextField, Card, CardActionArea, CardActions } from "@material-ui/core";
+import {
+  Button,
+  Grid,
+  TextField,
+  Card,
+  CardActionArea,
+  CardActions,
+  Divider,
+} from "@material-ui/core";
 import HeaderBackButton from "components/HeaderBackButton";
+import Modal from "components/Modal";
 import PhoneMask from "components/PhoneMask";
 import AppContext from "contexts/app";
+import useModal from "hooks/useModal";
 import React, { useContext, useState } from "react";
 import Keyboard from "react-simple-keyboard";
 import { unmaskCellphone } from "utils";
+import generateAccessCode from "utils/accessCode";
+import ConfirmInformationField from "./ConfirmInformationField";
 
 // import { Container } from './styles';
 
 interface INewExamFormProps {
   onBack: () => void;
-  onConfirm: (identification: string, phone: string) => void;
+  onConfirm: (accessCode: string, identification: string, phone: string) => void;
 }
 
 const NewExamForm = ({ onBack, onConfirm }: INewExamFormProps) => {
   const { state } = useContext(AppContext);
+  const { visibility, openModal, closeModal } = useModal();
   const [identification, setIdentification] = useState("");
   const [phone, setPhone] = useState("");
   const [identificationError, setIdentificationError] = useState("");
   const [phoneError, setPhoneError] = useState("");
+  const [accessCode, setAccessCode] = useState(generateAccessCode());
 
   const clearErrors = () => {
     setIdentificationError("");
@@ -48,7 +62,8 @@ const NewExamForm = ({ onBack, onConfirm }: INewExamFormProps) => {
       return;
     }
 
-    onConfirm(identification, phone);
+    // onConfirm(identification, phone);
+    openModal();
   };
 
   const showKeyboard = state.mode === "tablet";
@@ -108,6 +123,37 @@ const NewExamForm = ({ onBack, onConfirm }: INewExamFormProps) => {
           </div>
         </Grid>
       )}
+
+      <Modal
+        visible={visibility}
+        handleClose={closeModal}
+        title="Confirmação"
+        content={
+          <Grid container className="spacing-x2 no-spacing-bottom">
+            <Grid md={4} sm={12}>
+              <ConfirmInformationField label="Identificação" value={identification} />
+            </Grid>
+            <Grid md={4} sm={12}>
+              <ConfirmInformationField label="Telefone" value={phone} />
+            </Grid>
+            <Grid md={4} sm={12}>
+              <ConfirmInformationField label="Código de Acesso" value={accessCode} />
+            </Grid>
+            <Grid className="modal-footer" container justify="flex-end">
+              <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                onClick={() => {
+                  onConfirm(accessCode, identification, phone);
+                }}
+              >
+                Iniciar exame
+              </Button>
+            </Grid>
+          </Grid>
+        }
+      />
     </Grid>
   );
 };

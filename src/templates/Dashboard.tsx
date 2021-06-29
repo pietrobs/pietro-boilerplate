@@ -14,6 +14,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -180,6 +181,18 @@ const Dashboard = ({ children }: IDashboardProps) => {
               <VideoCallIcon />
             </ListItemIcon>
             <ListItemText primary="Gravar" />
+          </ListItem>
+
+          <ListItem
+            button
+            onClick={() => {
+              redirect("exams");
+            }}
+          >
+            <ListItemIcon>
+              <FormatListBulletedIcon />
+            </ListItemIcon>
+            <ListItemText primary="Exames" />
           </ListItem>
         </List>
         <Divider />
